@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web servers and web browsers</title>
+    <link rel="icon" type="image/x-icon"
+        href="https://www.bing.com/images/search?view=detailV2&ccid=IsNlIqOl&id=F99CA64FFDF9284E9898D5F1721EBC21632F6131&thid=OIP.IsNlIqOlZqDMkeWgZ1NDxwHaHa&mediaurl=https%3a%2f%2fimg.freepik.com%2ffree-psd%2fgoogle-icon-isolated-3d-render-illustration_47987-9777.jpg%3fw%3d2000%26t%3dst%3d1695998360%7eexp%3d1695998960%7ehmac%3d90cd6acb6bb94223c21f2321b231ff376e6a5336d5249ba90c12c94832e727a3&exph=2000&expw=2000&q=google&FORM=IRPRST&ck=32970F604450093C4489D71667DFE08B&selectedIndex=2&itb=0">
+
+    <style>
+        body {
+            background-color: aliceblue;
+        }
+
+        .main {
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            display: flex;
+        }
+
+        marquee {
+            text-align: center;
+            color: rgb(10, 78, 36);
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+
+        .sec {
+            width: 50%;
+            border: 8px double black;
+            border-radius: 30px;
+            padding: 10px;
+            justify-content: center;
+            margin: 5px;
+
+        }
+
+        th {
+            padding: 13px;
+            font-size: 25px;
+            background-color: blanchedalmond;
+            border-radius: 20px;
+        }
+
+        table {
+            margin: 40px;
+            border: 6px double;
+            border-radius: 20px;
+        }
+
+        .td1 {
+            font-size: 22px;
+            padding: 8px;
+            font-weight: bold;
+            border-radius: 20px;
+        }
+
+        td {
+            padding: 8px;
+            font-size: 20px;
+            font-style: italic;
+            border-radius: 20px;
+        }
+
+        p {
+            font-weight: bold;
+            font-size: 20px;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .learn {
+            font-size: 25px;
+            text-decoration: none;
+        }
+
+        .head {
+            font-size: 40px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <marquee height="100%" behavior="slide" direction="up" scrollamount="5">
+        <h1>Web Servers & Web Browsers</h1>
+    </marquee>
+
+    <div class="main">
+
+        <div class="sec">
+            <h1 class="head">What is WEB BROWSER ???</h1>
+            <center><img src="https://networkencyclopedia.com/wp-content/uploads/2019/09/web-browsers.jpg" alt=""
+                    style="width: 250px;"></center>
+
+            <P>A web browser is an application software that can process and display a web page on the internet.
+                The web browser is capable to make a request for web services and documents to web server.
+                It acts an interface between the server and the client.
+                As web browser is a software, thus it is to be installed on the client computer and used to surf the
+                internet for websites and web pages. Popular examples of web browsers include Google Chrome,
+                Microsoft Internet Explorer, Microsoft Edge, Mozilla Firefox, Opera Mini, etc.</P>
+        </div>
+
+        <div class="sec">
+            <h1 class="head">What is WEB SERVER ???</h1>
+            <center>
+                <img src="https://s3.kstorage.vn/api-kdata/photos/28/web-server-11.jpg" alt="" width="400px">
+            </center>
+
+            <P>A web server is a dedicated computer that sends web based documents to the client's computer when request
+                through the web browser. A web server accepts HTTP request from the client's browser,
+                processes it to find the required document, and then sends a suitable response to client machine.
+
+                A web server is a basically a set of hardware and software whose primary function is to serve
+                web-based material through the internet on demand.</P>
+        </div>
+
+    </div>
+<br><br>
+    <div>
+        <center><img width="50%"
+                src="https://www.copahost.com/blog/wp-content/uploads/2023/06/browser-vs-web-server.jpeg" alt="">
+        </center>
+    </div>
+
+    <div>
+        <h1 style="color: rgb(10, 78, 36);">Communication Between Web Browser and Web Server</h1>
+        <p>Web browsers and web servers function together as a client-server system. In computer networking,
+            client-server is a standard method for designing applications where data is kept in central locations
+            (server computers) and efficiently shared with any number of other computers (the clients) on request.
+            All web browsers function as clients that request information from websites (servers).
+
+            Numerous web browser clients can request data from the same website. Requests can happen at different
+            times or simultaneously. Client-server systems conceptually call for all requests to the same site to
+            be handled by one server. In practice, however, because the volume of requests to web servers can
+            sometimes grow very large, web servers are often built as a distributed pool of server computers.
+
+            For websites popular in different countries around the world, this web server pool is geographically
+            distributed to help improve the response time to browsers. If the server is closer to the requesting
+            device, the time it takes to deliver the content is faster than if the server were further away.</p>
+    </div>
+
+    <div>
+        <h1 align="center" style="color: rgb(10, 78, 36);">Difference Between Web Browser and Web Server</h1>
+        <table border="6px" >
+            <tr>
+                <th>Factor</th>
+                <th>Web Browser</th>
+                <th>Web Server</th>
+            </tr>
+            <tr>
+                <td class="td1">Purpose</td>
+                <td>Web Browser is a software which is used to browse and display pages available over internet.</td>
+                <td>Web server is a software which provides these documents when requested by web browsers.</td>
+            </tr>
+            <tr>
+                <td class="td1">Function</td>
+                <td>A web browser sends request to server for web based documents and services. </td>
+                <td>Web server sees and approves those requests made by web browsers and sends the document in response
+                </td>
+            </tr>
+            <tr>
+                <td class="td1">Process</td>
+                <td>Web browsers send HTTP Request and receive HTTP Response</td>
+                <td>Web servers receive HTTP Request and send HTTP Response.</td>
+            </tr>
+            <tr>
+                <td class="td1">Processing Model</td>
+                <td>Web browser has no processing model.</td>
+                <td>Web servers follow three major processing models: process based, thread based or hybrid.</td>
+            </tr>
+            <tr>
+                <td class="td1">Data Storage</td>
+                <td>Web browsers stores user data in cookies in local machine.</td>
+                <td>Web servers provide an area to store the website.</td>
+            </tr>
+            <tr>
+                <td class="td1">Installation</td>
+                <td>Web Browser is installed on user's machine.</td>
+                <td>Web servers can be installed anywhere but it need to be on a network or on local computer.</td>
+            </tr>
+            <tr>
+                <td class="td1">Act As</td>
+                <td>Web browser acts as an interface between the web server and client.</td>
+                <td>Web servers act as the sender of web resources like web pages.</td>
+            </tr>
+            <tr>
+                <td class="td1">Resposibility</td>
+                <td>Web browser is responsible to request for a website or webpage located on the internet.</td>
+                <td>Web server is responsible for hosting websites, processing web requests, and sending the demanded
+                    document to the client.</td>
+            </tr>
+            <tr>
+                <td class="td1">Example</td>
+                <td>Examples of web browsers include Google Chrome, Internet explorer, Mozilla Firefox, etc.</td>
+                <td>Apache Server is an example of a web server.</td>
+            </tr>
+        </table>
+    </div>
+
+    <center><a target="_blank" class="learn"
+            href="https://www.tutorialspoint.com/difference-between-web-browser-and-web-server">
+            To learn more, click here</a></center>
+
+</body>
+
+</html>
