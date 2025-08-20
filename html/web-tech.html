@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Technology</title>
+    <style>
+        .first{
+            /* width: 100%; */
+            height: 800px;
+            background-image: url(https://missionsustainability.org/wp-content/uploads/2025/01/life-cycle-assessment-businessman-using-laptop-with-virtual-lca_1291600-73753-1024x574.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* opacity: 0.7; */
+        }
+
+        .head1{
+            /* text-align: center;
+            margin-top: ; */
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .title{
+            font-size: 70px;
+            font-weight: 900;
+            color: aliceblue;
+        }
+
+        a{
+            color: aliceblue;
+            text-decoration: none;
+        }
+
+        .contents{
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            height: 100vh;
+        }
+
+
+        .t1{
+            width: 100%;
+            font-size: 25px;
+        }
+
+        th{
+            border: 1px solid rgb(255, 255, 255);
+            padding: 20px;
+            width: 50%;
+            background-color: #1a4188;
+            color: white;
+        }
+
+        th:hover{
+            background-color: #0e2a5c;
+        }
+        
+        th a{
+            text-decoration: none;
+            color: white;
+        }
+
+        .cont-head{
+            height: 75px;
+            font-size: 50px;
+            text-shadow: 2px 2px 0px  #999999;
+            background-color: #b5e1f4;
+            padding: 10px;
+        }
+
+        p{
+            font-size: 25px;
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body id="TOP">
+
+    <div class="first">
+        <div  class="head1">
+            <h1  class="title"><a href="#table1">Web - Technology </a></h1>
+            
+        </div>
+    </div>
+
+    <div class="title2">
+        
+    </div>
+
+    <div id="table1" style="height: 1000px; margin-top: 300px;">
+        
+        <center><h1  style="font-size: 50px;">Table Of Contents</h1></center>
+
+        <table class="t1">
+            <tr>
+                <th><a href="#CS">Client/Server</a></th>
+                <th><a href="#CWA">Components of Web Applications</a></th>
+            </tr>
+            <tr>
+                <th><a href="#TWC">Type of Web Contents</a></th>
+                <th><a href="#HHR">HTTP-HTTP Request</a></th>
+            </tr>
+            <tr>
+                <th><a href="#DWP">Dynamic Web Page</a></th>
+                <th><a href="#AS">Application Servers</a></th>
+            </tr>
+            <tr>
+                <th colspan="2"><a href="#WS">Web Security</a></th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="main-cont">
+        <div>
+            <center><h1 class="cont-head" id="CS">Client/Server</h1></center>
+            <div>
+                <center><img style="height: 500px;" src="https://anvil.works/articles/img/client-vs-server/client-server-architecture.png" alt=""></center>
+                
+                <h2>🌐 The Client/Server Model</h2>
+                <p>Imagine a bustling library. You walk in, approach the librarian, and ask for a book. 
+                    The librarian searches the catalog, finds the book, and hands it to you. 
+                    In this analogy, you are the client, and the librarian is the server. 
+                    This is essentially how the client/server model works in the digital world.
+                    In computing, the client/server architecture is a framework where two distinct roles interact: 
+                    the client, which initiates requests, and the server, which fulfills them. 
+                    These roles are played by software applications or devices connected over a network.</p>
+
+                    <h2>🖥️ The Client</h2>
+                    <p>The client is typically a user's device or application—like a web browser, mobile app, 
+                        or desktop software. It’s the active participant that sends a request for data or services. 
+                        For example, when you type a URL into your browser, 
+                        the browser becomes the client that asks a web server to deliver the requested webpage.
+                        Clients are designed to be lightweight and user-facing. 
+                        They don’t usually store large amounts of data or perform complex processing. 
+                        Instead, they rely on servers to do the heavy lifting.</p>
+
+                    <h2>🗄️ The Server</h2>
+                    <p>The server is a powerful system or application that listens for incoming requests and responds
+                         accordingly. It could be a web server hosting websites, a database server managing data, 
+                         or a mail server handling email traffic. Servers are often centralized, 
+                         meaning they serve multiple clients simultaneously and maintain control over resources 
+                         and data.
+                         Servers are built to be robust, secure, and scalable. They often run continuously, 
+                         ensuring that clients can access services at any time.</p>
+
+                    <h2>🔄 The Interaction</h2>
+                    <p>The magic happens over a network—usually the internet or a local area network (LAN). 
+                        The client sends a request, the server processes it, and then sends back a response. 
+                        This exchange is governed by protocols like HTTP (for web), FTP (for file transfers), 
+                        or SMTP (for email).
+                        For instance, when you send a message through WhatsApp, your phone acts as the client. 
+                        It sends the message to WhatsApp’s servers, which then route it to the recipient’s device. 
+                        The entire process happens in milliseconds, but it’s all built on the client/server model.</p>
+            </div>
+        </div>
+
+        <div>
+            <center><h1 class="cont-head" id="CWA">Components of Web Applications</h1></center>
+            <div>
+                <center><img style="height: 500px;" src="https://www.scnsoft.com/blog-pictures/web-apps/web-application-architecture-03.png"></center>
+                <p>A web application is a dynamic software system that operates through a web browser, 
+                composed of several key components working in harmony: the frontend, which handles
+                user interaction and visual presentation using HTML, CSS, and JavaScript; the backend,
+                which processes logic, manages requests, and connects to the database; the database itself,
+                which stores and retrieves data; APIs, which enable communication between different services
+                or parts of the app; authentication and authorization systems that secure user access; and 
+                hosting infrastructure, which delivers the application to users over the internet via web 
+                servers. Together, these elements create seamless, interactive experiences like online 
+                shopping, social media, and cloud-based tools.</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <center><h1 class="cont-head" id="TWC">Type of Web Contents</h1></center>
+                <center><img style="height: 500px;" src="https://www.insivia.com/wp-content/uploads/2013/06/content-types.png"></center>
+                <P>Web content comes in various forms, each serving a unique purpose. 
+                    <strong>Textual content</strong> includes articles, blogs, and product descriptions that 
+                    inform or persuade. <STRONG>Visual content</STRONG> like images, infographics, and 
+                    illustrations enhances engagement and clarity. <strong>Multimedia content</strong> videos,
+                     animations, and podcasts—adds dynamic storytelling and entertainment. 
+                     <strong>Interactive content</strong> such as quizzes, forms, and calculators boosts user 
+                     participation. <strong>Transactional content</strong> supports actions like purchases or bookings, while 
+                     <strong>navigational content</strong> (menus, links, buttons) guides users through the site. 
+                     Together, these types shape the user experience and fulfill different goals, from education to 
+                     conversion.</P>
+            </div>
+        </div>
+        <div>
+            <div>
+                <center><h1 class="cont-head" id="HHR">HTTP-HTTP Request</h1></center>
+                <center><img style="height: 500px;" src="https://storage.googleapis.com/dopingcloud/blog/en/2023/06/http-request-types.jpg"></center>
+                <P>An <strong>HTTP request</strong> is a message sent by a client (like a web browser) to a server,
+                     asking for data or action. It follows the rules of the <strong>Hypertext Transfer Protocol (HTTP)</strong>, 
+                     which is the foundation of data communication on the web. Each request includes a **method** 
+                     (such as GET, POST, PUT, DELETE), a <strong>URL</strong>, optional <strong>headers</strong> (like authentication or 
+                     content type), and sometimes a **body** (especially in POST or PUT requests). The server 
+                     processes the request and sends back an <strong>HTTP response</strong> with status codes (like 200 OK or 
+                     404 Not Found) and the requested content. This exchange enables everything from loading a 
+                     webpage to submitting a form online.</P>
+            </div>
+        </div>
+        <div>
+            <div>
+                <center><h1 class="cont-head" id="DWP">Dynamic Web Page</h1></center>
+                <center><img style="height: 500px;" src="https://cdn.educba.com/academy/wp-content/uploads/2020/07/Dynamic-Website-768x427.jpg"></center>
+                <P>A <STRONG>dynamic web page</STRONG> is a type of webpage that changes its content or 
+                    appearance based on user interactions, data inputs, or real-time updates. Unlike 
+                    static pages that display the same information to every visitor, dynamic pages are
+                    powered by server-side technologies like PHP, ASP.NET, or Node.js, often working with
+                    databases to fetch and display personalized or updated content. For example, when you
+                    log into your email or shop online, the page adapts to show your messages or recommended
+                    products—making the experience interactive, responsive, and tailored to each user.</P>
+            </div>
+        </div>
+        <div>
+            <div>
+                <center><h1 class="cont-head" id="AS">Application Servers</h1></center>
+                <center><img style="height: 500px;" src="https://cdn.educba.com/academy/wp-content/uploads/2019/04/What-is-Application-Server-1.jpg"></center>
+                <P>An <STRONg>application server</STRONg> is a software framework that provides an environment 
+                    for running and managing web applications. It handles business logic, processes client 
+                    requests, connects to databases, and serves dynamic content. Unlike a web server that 
+                    mainly delivers static files, an application server executes code—often written in languages 
+                    like Java, Python, or .NET—to generate responses based on user input or system data. Popular 
+                    examples include Apache Tomcat, JBoss, and Microsoft IIS. These servers are essential for 
+                    powering complex, interactive websites and enterprise-level applications.</P>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <center><h1 class="cont-head" id="WS">Web Security</h1></center>
+                <center><img style="height: 500px;" src="https://cwatch.comodo.com/blog/wp-content/uploads/2020/05/good-website-security-plan.jpg"></center>
+                <P><strong>Web security</strong> is the practice of protecting websites and web applications from cyber threats that
+                     can compromise data, disrupt services, or harm users. It involves safeguarding sensitive 
+                     information, ensuring safe user interactions, and maintaining the integrity and availability 
+                     of online platforms.
+                     
+                     Common threats include phishing, malware, SQL injection, cross-site scripting (XSS), 
+                     and denial-of-service (DoS) attacks. These can lead to data breaches, financial loss, 
+                     and damage to reputation. To counter them, websites use encryption (like HTTPS), 
+                     strong authentication, input validation, and firewalls.
+                     
+                     Developers follow secure coding practices and regularly update software to patch 
+                     vulnerabilities. Security tools like Web Application Firewalls (WAFs), intrusion 
+                     detection systems, and monitoring services help detect and block suspicious activity. 
+                     User education also plays a key role in preventing attacks.
+                     
+                     Ultimately, web security is essential for building trust, protecting digital assets, 
+                     and ensuring a safe online experience for everyone.</P>
+            </div>
+        </div>
+
+        <center><a style="text-decoration: none; font-size: 35px;color: rgb(4, 4, 202); font-weight: 700;" href="#TOP">Back to top</a></center>
+    </div>
+
+</body>
+</html>
