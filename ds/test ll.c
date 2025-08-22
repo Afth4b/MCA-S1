@@ -22,9 +22,23 @@ struct Node* CreateNode(int data) {
     return newNode;
 }
 
+// Insert node at beginning
+void insertBeg(){
+    printf("Enter the data to insert at beginning : ");
+    scanf("%d",&item);
+    struct Node* newNoode = CreateNode(item);
+    if(head==NULL){
+        head = newNode;
+    }else{
+        newNode->next = head;
+        head = newNode;
+    }
+    printf("\nNew node inserted at beginning..!!")
+}
+
 // Insert node at the end
-void insert() {
-    printf("Enter the data to insert in linked list : ");
+void insertEnd() {
+    printf("Enter the data to insert at end : ");
     scanf("%d", &item);
     struct Node* newNode = CreateNode(item);
 
@@ -37,8 +51,10 @@ void insert() {
         }
         temp->next = newNode;
     }
-    printf("New node inserted to linked list..!\n");
+    printf("New node inserted at end..!\n");
 }
+
+//Insert node at position
 
 // Delete a node
 void delete() {
@@ -101,27 +117,47 @@ int main() {
 
     while (1) {
         printf("\n--- Linked List Menu ---");
-        printf("\n1. Insert a node");
-        printf("\n2. Delete a node");
-        printf("\n3. Display");
-        printf("\n4. Exit");
+        printf("\n1. Insert a node at the beginning");
+        printf("\n2. Insert a node at the end");
+        printf("\n3. Insert a node at required position");
+        printf("\n4. Delete a node at beginning");
+        printf("\n5. Delete a node at end");
+        printf("\n6. Delete a node at required position");
+        printf("\n7. Display");
+        printf("\n8. Exit");
         printf("\nSelect your choice : ");
         scanf("%d", &choice);
 
         switch (choice) {
             case 1:
-                insert();
+                insertBeg();
                 break;
-
+                
             case 2:
-                delete();
+                insertEnd();
                 break;
 
             case 3:
-                display();
+                insertPos();
                 break;
 
             case 4:
+                delBeg();
+                break;
+
+            case 5:
+                delEnd();
+                break;
+
+            case 6:
+                delPos();
+                break;
+
+            case 7:
+                display();
+                break;
+
+            case 8:
                 exit(0);
                 break;
 
