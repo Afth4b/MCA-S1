@@ -55,7 +55,7 @@ void insertEnd() {
         }
         temp->next = newNode;
     }
-    printf("New node inserted at end..!\n");
+    printf("New node M at end..!\n");
     
     display();
 }
