@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOB APPLICATION</title>
+
+    <style>
+
+        body {
+            background-color: #f5f5f5; /* Light gray background for neutrality */
+        }
+
+        marquee{
+            height: 60px;
+            font-style: italic;
+            color: rgb(84, 56, 21);
+            font-size: larger;
+        }
+
+        .form {
+            width: 50%;
+            background-color: #fffbf0; /* Soft cream color for warmth */
+            margin: 50px auto;
+            border: 1px solid rgb(84, 56, 21); /* Soft gold border */
+            border-radius: 25px 0 25px 0;
+            padding: 50px;
+            font-size: 20px;
+            box-shadow: 0 8px 20px #63431c; /* Warm yellow shadow */
+        }
+
+        th,td{
+            padding: 8px;
+            text-align: left;
+            font-size: 22px;
+        }
+        
+
+        input[type="text"]{
+            border-radius: 5px;
+            width: 300px;
+            height: 25px;
+            border:2px solid rgb(84, 56, 21);
+        }
+
+        input[type="password"]{
+            border-radius: 5px;
+            width: 300px;
+            height: 25px;
+            border:2px solid rgb(84, 56, 21);
+        }
+
+        input[type="email"]{
+            border-radius: 5px;
+            width: 300px;
+            height: 25px;
+            border:2px solid rgb(84, 56, 21);
+        }
+
+        select{
+            border-radius: 5px;
+            width: 40px;
+            height: 25px;
+            border:2px solid rgb(84, 56, 21);
+        }
+
+        input[type="file"]{
+            border-radius: 5px;
+            width: 80x;
+            height: 40px;
+            font-size: large;
+            border:2px solid rgb(84, 56, 21);
+        }
+
+        input[type="reset"]{
+            border-radius: 5px;
+            width: 100px;
+            font-weight: bolder;
+            background-color: rgb(84, 56, 21);
+            color: white;
+            height: 25px;
+            border:2px solid rgb(84, 56, 21);
+            font-size: 18px;
+        }
+
+        input[type="submit"]{
+            border-radius: 5px;
+            width: 100px;
+            font-weight: bolder;
+            background-color: rgb(84, 56, 21);
+            color: white;
+            height: 25px;
+            border:2px solid rgb(84, 56, 21);
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <marquee behavior="alternate" onmouseover="this.stop();" onmouseout="this.start();" direction="right">
+            <h1>WELCOME TO FRESHERS WORLD !!</h1>
+        </marquee>
+    </div>
+
+    <div class="form">
+        <table>
+            
+            <caption><h1>Registration Form</h1></caption>
+            <tr>
+                <th>Name</th>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <th>
+                    <select name="age" id="">
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                    </select>
+                </th>
+            </tr>
+
+            <tr>
+                <th>Password</th>
+                <th><input type="password"></th>
+            </tr>
+
+            <tr>
+                <th>Re-Enter Password</th>
+                <th><input type="password"></th>
+            </tr>
+
+            <tr>
+                <th rowspan="4">Select your secuity question</th>
+                <td><input type="radio" name="sec">What is your petname ?</td>
+            </tr>
+
+            <tr>
+                <td><input type="radio" name="sec">Who is your bestfriend ?</td>
+            </tr>
+
+            <tr>
+                <td><input type="radio" name="sec">What is your favourite colour ?</td>
+            </tr>
+
+            <tr>
+                <td><input type="radio" name="sec">Who is your favourite teacher ?</td>
+            </tr>
+
+            <tr>
+                <th>Answer of your security question</th>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <th>E-mail ID</th>
+                <td><input type="email"></td>
+            </tr>
+
+            <tr>
+                <th>Languages known</th>
+                <td>
+                    <input type="checkbox">Malayalam
+                    <input type="checkbox">English
+                    <input type="checkbox">Hindi
+                </td>
+            </tr>
+
+            <tr>
+                <th>Phone Number</th>
+                <td>
+                    <table>
+                        <tr>
+                            <th>Home</th>
+                            <th>Office</th>
+                        </tr>
+                        <tr>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <th>Upload CV</th>
+                <td><input style="border: none;" type="file"></td>
+            </tr>
+
+            <tr>
+                <td><center><input type="reset"></center></td>
+                <td><center><input type="submit"></center></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
