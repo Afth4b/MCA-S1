@@ -4,31 +4,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS</title>
+    <title>world of CSS</title>
+    <link rel="stylesheet" href="aboutCss.css">
+    <link rel="icon"
+        href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png">
 
     <style>
-        #intro h1{
-            font-size: 70px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-style: italic;
-            text-decoration: underline;
+        .intImg {
+            width: 100%;
+            height: 100vh;
+            background-image: url(https://cdn.mos.cms.futurecdn.net/Vp9WvV7YKdH4k8sKRePcE8-1200-80.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
         }
+
+        .nav ul {
+            font-size: 20px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333333;
+        }
+
+        .nav ul li {
+            float: left;
+        }
+
+        .nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .nav ul li a:hover {
+            background-color: #111111;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 50px;
+            text-decoration: underline;
+            color: #213b6c;
+        }
+
+        .list li,p {
+            font-size: 22px;
+            margin: 20px;
+        }
+
+
     </style>
 
 </head>
 
 <body>
-    <div style="width: 100%;
-    height: 500px;background-color: antiquewhite;
-    background-image: url(https://www.bitdegree.org/learn/storage/media/images/css-tutorial-img1-01.o.png);
-    background-repeat: no-repeat;
-    background-size: cover;">
+    <div class="intImg"></div>
+    <div class="nav">
+        <ul>
+            <li><a href="#Introduction">Introduction</a></li>
+            <li><a href="#syntax">CSS Syntax</a></li>
+            <li><a href="#selectors">CSS Selectors</a></li>
+            <li><a href="#comments">CSS Comments</a></li>
+            <li><a href="#Colors">CSS Colors</a></li>
+            <li><a href="#borders">CSS Borders</a></li>
+            <li><a href="#margin">CSS Margin</a></li>
+            <li><a href="#hieght">Height and Width</a></li>
+            <li><a href="#outline">CSS Outline</a></li>
+        </ul>
     </div>
 
-    <div id="intro">
-        <center><h1>Introduction</h1></center>
-        <img src="" alt="">
+    <div id="Introduction" style="background-color: ;">
+        <h1>Introduction to CSS</h1>
+
+        <p>CSS (Cascading Style Sheets) is a language designed to simplify
+            the process of making web pages presentable.</p>
+
+        <ul class="list">
+            <li>It allows you to apply styles to HTML documents by prescribing colors,
+                fonts, spacing, and positioning.</li>
+            <li>
+                The main advantages are the separation of content (in HTML) and styling
+                (in CSS) and the same CSS rules can be used across all pages and not have to be rewritten.</li>
+            <li>
+                HTML uses tags, and CSS uses rule sets.</li>
+            <li>
+                CSS styles are applied to the HTML element using selectors.</li>
+        </ul>
+
+        <center><img style="width: 700px; border: 4px solid #213b6c;"
+                src="https://media.geeksforgeeks.org/wp-content/uploads/20250606170311067516/Webpage-With---without-CSS.webp"
+                alt=""></center>
     </div>
+
+    <h1>Why CSS?</h1>
+
+    <ul class="list">
+        <li>Saves Time: Write CSS once and reuse it across multiple HTML pages.</li>
+        <li>
+            Easy Maintenance: Change the style globally with a single modification.</li>
+        <li>
+            Search Engine Friendly: Clean coding technique that improves readability for search engines.</li>
+        <li>
+            Superior Styles: Offers a wider array of attributes compared to HTML.</li>
+        <li>
+            Offline Browsing: CSS can store web applications locally using an offline cache, allowing offline viewing.
+        </li>
+    </ul>
+
+
+
 </body>
 
 </html>
