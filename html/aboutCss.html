@@ -28,7 +28,7 @@
         }
 
         .nav ul li {
-            float: left;
+            align-items: center;
         }
 
         .nav ul li a {
@@ -37,10 +37,12 @@
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
+            transition: 0.5s;
         }
 
         .nav ul li a:hover {
             background-color: #111111;
+            scale: 1.2;
         }
 
         h1 {
@@ -50,12 +52,17 @@
             color: #213b6c;
         }
 
-        .list li,p {
+        .list li,
+        p {
             font-size: 22px;
             margin: 20px;
         }
 
-
+        p {
+            font-size: 22px;
+            margin: 20px;
+            line-height: 2;
+        }
     </style>
 
 </head>
@@ -65,18 +72,16 @@
     <div class="nav">
         <ul>
             <li><a href="#Introduction">Introduction</a></li>
-            <li><a href="#syntax">CSS Syntax</a></li>
+            <li><a href="#basics">CSS Basics</a></li>
             <li><a href="#selectors">CSS Selectors</a></li>
-            <li><a href="#comments">CSS Comments</a></li>
-            <li><a href="#Colors">CSS Colors</a></li>
-            <li><a href="#borders">CSS Borders</a></li>
-            <li><a href="#margin">CSS Margin</a></li>
-            <li><a href="#hieght">Height and Width</a></li>
-            <li><a href="#outline">CSS Outline</a></li>
+            <li><a href="#boxmodel">CSS Box model </a></li>
+            <li><a href="#grid">CSS Grid</a></li>
+            <li><a href="#trans">CSS Transitions and Animations</a></li>
+            <li><a href="#resp">Responsive designing</a></li>
         </ul>
     </div>
 
-    <div id="Introduction" style="background-color: ;">
+    <div id="Introduction">
         <h1>Introduction to CSS</h1>
 
         <p>CSS (Cascading Style Sheets) is a language designed to simplify
@@ -97,22 +102,155 @@
         <center><img style="width: 700px; border: 4px solid #213b6c;"
                 src="https://media.geeksforgeeks.org/wp-content/uploads/20250606170311067516/Webpage-With---without-CSS.webp"
                 alt=""></center>
+
+        <h1>Why CSS?</h1>
+
+        <ul class="list">
+            <li>Saves Time: Write CSS once and reuse it across multiple HTML pages.</li>
+            <li>
+                Easy Maintenance: Change the style globally with a single modification.</li>
+            <li>
+                Search Engine Friendly: Clean coding technique that improves readability for search engines.</li>
+            <li>
+                Superior Styles: Offers a wider array of attributes compared to HTML.</li>
+            <li>
+                Offline Browsing: CSS can store web applications locally using an offline cache, allowing offline
+                viewing.
+            </li>
+        </ul>
     </div>
 
-    <h1>Why CSS?</h1>
+    <div id="basics">
+        <h1>CSS Basics</h1>
 
-    <ul class="list">
-        <li>Saves Time: Write CSS once and reuse it across multiple HTML pages.</li>
-        <li>
-            Easy Maintenance: Change the style globally with a single modification.</li>
-        <li>
-            Search Engine Friendly: Clean coding technique that improves readability for search engines.</li>
-        <li>
-            Superior Styles: Offers a wider array of attributes compared to HTML.</li>
-        <li>
-            Offline Browsing: CSS can store web applications locally using an offline cache, allowing offline viewing.
-        </li>
-    </ul>
+        <center><img class="imgcont"
+                src="https://www.oxfordwebstudio.com/user/pages/06.da-li-znate/sta-je-css/sta-je-css.png" alt="">
+        </center>
+
+        <p>CSS, or Cascading Style Sheets, is a fundamental technology used to style web pages written in HTML. It
+            allows developers to control the visual appearance of elements like text, images, and layouts without
+            changing the HTML structure. By linking a CSS file or embedding CSS directly in HTML, designers can separate
+            content from design, making websites easier to maintain and update. CSS rules consist of selectors and
+            declarations, where selectors target HTML elements, and declarations define styles such as color, font size,
+            and spacing. It supports various units like pixels, percentages, and ems to control sizing. CSS also enables
+            adding backgrounds, borders, and animations to enhance user experience. It is supported by all modern
+            browsers, making it essential for web development. Learning CSS is often the first step in front-end web
+            development, enabling creativity and functionality.</p>
+
+    </div>
+
+    <div id="selectors">
+        <h1>CSS Selectors</h1>
+        <center><img class="imgcont" src="https://studyopedia.com/wp-content/uploads/2017/07/CSS-Selectors.png" alt="">
+        </center>
+        <p>Selectors are the core of CSS, used to pinpoint which HTML elements a set of style rules should apply to.
+            There are many types of selectors, including element selectors that target tags like
+            <i> <b>P, H1</b></i>, class selectors that use a period followed by a class name (e.g., .button), and ID
+            selectors that use a
+            hash symbol and an ID name <i>(e.g., #header).</i> Combinators like descendant selectors (div p) apply
+            styles based
+            on hierarchy. Pseudo-classes like <i><b>:hover</b></i> or <i><b>:nth-child()</b></i> allow styling elements
+            based on their state or
+            position. Attribute selectors target elements with specific attributes, such as <i><b>[type="text"]</b></i>.
+            Understanding
+            selectors is vital to write precise CSS rules and avoid unwanted styles cascading to other elements. The
+            specificity of selectors determines which styles override others when conflicts arise. Mastery of selectors
+            leads to efficient and maintainable stylesheets.
+        </p>
+    </div>
+
+    <div id="boxmodel">
+        <h1>CSS Box Model</h1>
+
+        <center><img class="imgcont" src="https://teachyourselfcoding.com/wp-content/uploads/2020/05/image-3.png" alt=""></center>
+        <p>The CSS box model is a critical concept that describes how elements are rendered on a page. Every HTML
+            element is represented as a rectangular box comprising four parts: content, padding, border, and margin. The
+            content area holds text or images, padding creates space inside the element, the border surrounds the
+            padding, and the margin creates space outside the border separating the element from others. Understanding
+            the box model is important for controlling layout and spacing precisely. For example, adding padding
+            increases the size of the element visually, but does not affect the margin between elements. Borders can be
+            styled with color, width, and pattern. Margins can collapse in vertical directions, a unique behavior
+            important to grasp for layout consistency. The <i><b>box-sizing</b></i> property can change how widths and
+            heights are
+            calculated, typically set to <i><b>border-box</b></i> for easier sizing control.</p>
+    </div>
+
+    <div id="flexbox">
+
+        <h1>CSS Flexbox</h1>
+
+        <center><img class="imgcont" src="https://images.viblo.asia/full/f53dfbcb-a7c1-417e-9c2e-6e3dd6a02378.png" alt=""></center>
+        <p>Flexbox, short for flexible box layout, is a powerful CSS module designed to arrange elements within a
+            container efficiently. It works by defining a flex container with <i><b>display: flex;</b></i> and then
+            controlling the
+            layout of its children. Flexbox allows items to grow, shrink, or wrap based on available space, making it
+            perfect for responsive designs. Key properties include <i><b>justify-content</b></i> for horizontal
+            alignment, <b><i>align-items</i></b>
+            for vertical alignment, and <i><b>flex-direction</b></i> to set row or column layouts. Flexbox simplifies
+            vertical
+            centering, a traditionally tricky task in CSS. It also supports reordering items visually without changing
+            the HTML structure. Because of its adaptability, Flexbox is widely used in modern web layouts, such as
+            navigation bars, card grids, and form controls. Learning Flexbox significantly improves front-end
+            developers’ ability to create fluid and responsive interfaces.</p>
+    </div>
+
+    <div id="grid">
+
+        <h1>CSS Grid</h1>
+
+        <center><img class="imgcont" src="https://i.ytimg.com/vi/ExOkpqCG20g/maxresdefault.jpg" alt=""></center>
+        <p>CSS Grid is a two-dimensional layout system that allows developers to create complex and responsive web
+            layouts with ease. Unlike Flexbox, which is mainly one-dimensional (row or column), Grid works both
+            vertically and horizontally. Defining a grid container with <i><b>display: grid;</b></i> lets you specify
+            rows and columns
+            using <i><b>grid-template-rows</b></i> and <i><b>grid-template-columns</b></i>. You can place items
+            explicitly in specific grid cells or
+            areas, giving designers fine control over layout. Grid supports features like gaps between rows and columns
+            (<i><b>grid-gap</b></i>), auto-placement, and alignment controls. It is ideal for building full-page
+            layouts, dashboards,
+            and magazine-style designs. CSS Grid has gained massive popularity due to its power and simplicity compared
+            to older techniques like floats and tables. Combining Grid with media queries enables flexible, responsive
+            designs that adapt beautifully to different screen sizes.</p>
+    </div>
+
+    <div id="trans">
+
+        <h1>CSS Transitions and Animations</h1>
+
+        <center><img class="imgcont" src="https://miro.medium.com/v2/resize:fit:1200/1*wUF_TVxvkTk0j6LulG9gww.jpeg" alt=""></center>
+        <p>CSS transitions and animations bring interactivity and smooth visual effects to web pages without needing
+            JavaScript. Transitions enable gradual changes of CSS properties over time, triggered by events like hover
+            or focus. For example, changing a button’s background color smoothly when hovered creates a polished effect.
+            You define transitions using properties like <i><b>transition-property, transition-duration, </b></i>and
+            <i><b>
+                    transition-timing-function</b></i>. Animations allow more complex, multi-step sequences, defined
+            with <i><b>@keyframes</b></i>,
+            specifying intermediate styles at different percentages. Animations can loop, reverse, or play once, adding
+            life to elements like loaders, sliders, or page transitions. Both transitions and animations improve user
+            experience by making UI changes feel natural and responsive. Learning how to combine these tools unlocks
+            creative design possibilities without performance-heavy scripts.
+        </p>
+    </div>
+
+    <div id="resp">
+
+        <h1>Responsive Designing</h1>
+
+        <center><img class="imgcont" src="https://colorwhistle.com/wp-content/uploads/2014/12/responsive-web-design-why-it-matters.jpg" alt=""></center>
+
+        <p>Responsive design is a CSS approach that ensures web pages look and function well on devices of all sizes,
+            from smartphones to desktops. This is achieved using media queries, which apply different CSS rules based on
+            device characteristics like screen width, height, resolution, or orientation. For example, you can change
+            font sizes, layout structures, or hide certain elements on smaller screens. Flexible units like percentages,
+            ems, and viewport units <i><b>(vw and vh)</b></i> are used instead of fixed pixel values to create adaptable
+            designs.
+            Responsive images, flexible grids, and scalable typography contribute to usability and accessibility.
+            Mobile-first design is a common strategy where styles are initially designed for small screens, then
+            enhanced for larger devices. Responsive design improves user experience and is critical in modern web
+            development due to the diversity of internet-connected devices.</p>
+    </div>
+
+
 
 
 
