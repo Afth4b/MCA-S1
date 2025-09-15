@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+  
+        <input type="number" id="num1"><br>
+        <input type="number" id="num2"><br>
+        <button onclick="sum()">find sum</button>
+        <!-- <h2 id="result"></h2> -->
+   
+    
+</body>
+<script>
+        function sum(){
+            let x = parseInt(document.getElementById("num1").value);
+            let y = parseInt(document.getElementById("num2").value);
+            let z = x+y;
+            // document.getElementById("result").innerHTML=z;
+            alert("sum = "+z)
+        }
+        
+    </script>
+</html>
