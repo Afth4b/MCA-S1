@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>String Functions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>String Utility Functions</title>
   <style>
-    /* Global Reset and Base Styles */
+    /* Reset and base styles */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -14,51 +14,55 @@
     }
 
     body {
-      background-color: #f0f4f8;
-      color: #333;
-      padding: 40px 20px;
+      background-color: #eef2f7;
+      color: #2c3e50;
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 60px 20px;
     }
 
-    h1, h2 {
-      color: #2c3e50;
-      margin-bottom: 20px;
+    h1 {
+      margin-bottom: 30px;
+      font-size: 2rem;
     }
 
-    /* Container Styling */
     .card {
-      background-color: #fff;
+      background: #fff;
+      max-width: 700px;
       width: 100%;
-      max-width: 600px;
-      padding: 30px;
-      margin: 20px 0;
+      padding: 40px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     }
 
     label {
-      display: block;
-      font-weight: 500;
+      font-weight: 600;
       margin-bottom: 10px;
+      display: block;
     }
 
     input[type="text"] {
       width: 100%;
-      padding: 10px;
-      font-size: 1em;
-      border-radius: 6px;
+      padding: 12px;
+      font-size: 1rem;
       border: 1px solid #ccc;
-      margin-bottom: 20px;
+      border-radius: 6px;
+      margin-bottom: 25px;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
     }
 
     button {
-      padding: 10px 20px;
-      margin: 8px 5px;
-      font-size: 1em;
+      padding: 10px 16px;
+      font-size: 0.95rem;
       background-color: #3498db;
-      color: #fff;
+      color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
@@ -66,112 +70,133 @@
     }
 
     button:hover {
-      background-color: #2980b9;
+      background-color: #2a80b9;
     }
 
-    #result {
-      margin-top: 20px;
-      font-size: 1.2em;
+    #result-box {
+      background: #f8f9fa;
+      padding: 20px;
+      border-left: 4px solid #3498db;
+      border-radius: 6px;
+      font-size: 1.1rem;
       color: #1a252f;
     }
 
-    /* Placeholder Styles */
-    .placeholder {
-      background-color: #fff;
-      width: 100%;
-      max-width: 600px;
-      padding: 20px 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .divider {
-      width: 100%;
-      max-width: 600px;
-      border-top: 1px solid #ddd;
-      margin: 30px 0;
+    @media (max-width: 600px) {
+      .button-group {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- String Functions Section -->
   <div class="card">
-    <h1>String Functions</h1>
+    <h1>String Utility Functions</h1>
+
     <label for="string">Enter a string:</label>
-    <input type="text" id="string" />
-    <div>
-      <button onclick="stringlen()">String Length</button>
+    <input type="text" id="string" placeholder="Type your string here..." />
+
+    <div class="button-group">
+      <button onclick="stringlen()">Length</button>
       <button onclick="toupper()">Uppercase</button>
       <button onclick="tolower()">Lowercase</button>
       <button onclick="slc()">Slice</button>
-      <button onclick="concatenate()">Concat</button>
+      <button onclick="concatenate()">Concatenate</button>
       <button onclick="findindex()">Index Of</button>
       <button onclick="findlastindex()">Last Index Of</button>
       <button onclick="search()">Search</button>
+      <button onclick="sub()">SubStr</button>
+      <button onclick="subs()">SubString</button>
+      <button onclick="rplc()">Replace</button>
     </div>
-    <h1 id="result"></h1>
+
+    <div id="result-box"><marquee behavior="" direction="">Result will appear here...</marquee></div>
   </div>
 
-
   <script>
+    function getInput() {
+      return document.getElementById("string").value;
+    }
+
+    function showResult(msg) {
+      document.getElementById("result-box").innerHTML = msg;
+    }
+
     function stringlen() {
-      let str = document.getElementById("string").value;
-      let len = str.length;
-      document.getElementById("result").innerHTML = "Length of string is " + len;
+      let str = getInput();
+      showResult("Length of string: " + str.length);
     }
 
     function toupper() {
-      let str = document.getElementById("string").value;
-      let up = str.toUpperCase();
-      document.getElementById("result").innerHTML = up;
+      let str = getInput();
+      showResult(str.toUpperCase());
     }
 
     function tolower() {
-      let str = document.getElementById("string").value;
-      let low = str.toLowerCase();
-      document.getElementById("result").innerHTML = low;
+      let str = getInput();
+      showResult(str.toLowerCase());
     }
 
-    function slc(){
-        let str = document.getElementById("string").value;
-        let x = prompt("Enter first index: ");
-        let y = prompt("Enter end index : ");
-        let z = str.slice(x,y);
-        document.getElementById("result").innerHTML = z;
-
+    function slc() {
+      let str = getInput();
+      let start = parseInt(prompt("Enter start index:"));
+      let end = parseInt(prompt("Enter end index:"));
+      if (isNaN(start) || isNaN(end)) return showResult("Invalid index.");
+      showResult(str.slice(start, end));
     }
 
-    function concatenate(){
-        let str1 = document.getElementById("string").value;
-        let str2 = prompt("Enter the second string to concatenate: ");
-
-        let res = str1.concat(str2);
-        document.getElementById("result").innerHTML = res;
+    function concatenate() {
+      let str1 = getInput();
+      let str2 = prompt("Enter the string to concatenate:");
+      showResult(str1.concat(str2));
     }
 
-    function findindex(){
-        let str = document.getElementById("string").value;
-        let str1 = prompt("Enter the string to find the index: ");
-        let x = str.indexOf(str1);
-        document.getElementById("result").innerHTML = x;
+    function findindex() {
+      let str = getInput();
+      let searchTerm = prompt("Enter the substring to find:");
+      let index = str.indexOf(searchTerm);
+      showResult(index >= 0 ? `First index: ${index}` : "Substring not found.");
     }
 
-    function findlastindex(){
-        let str = document.getElementById("string").value;
-        let str1 = prompt("Enter the string to find the last index: ");
-        let x = str.lastIndexOf(str1);
-        document.getElementById("result").innerHTML = x;
+    function findlastindex() {
+      let str = getInput();
+      let searchTerm = prompt("Enter the substring to find last index of:");
+      let index = str.lastIndexOf(searchTerm);
+      showResult(index >= 0 ? `Last index: ${index}` : "Substring not found.");
     }
 
-    function search(){
-        let str = document.getElementById("string").value;
-        let str1 = prompt("Enter the string to search: ");
-        let x = str.search(str1);
-        document.getElementById("result").innerHTML = x;
+    function search() {
+      let str = getInput();
+      let term = prompt("Enter the string to search:");
+      let index = str.search(term);
+      showResult(index >= 0 ? `Found at index: ${index}` : "Not found.");
+    }
+
+    function sub() {
+      let str = getInput();
+      let start = parseInt(prompt("Enter start index:"));
+      let len = parseInt(prompt("Enter length:"));
+      if (isNaN(start) || isNaN(len)) return showResult("Invalid input.");
+      showResult(str.substr(start, len));
+    }
+
+    function subs() {
+      let str = getInput();
+      let start = parseInt(prompt("Enter start index:"));
+      let end = parseInt(prompt("Enter end index:"));
+      if (isNaN(start) || isNaN(end)) return showResult("Invalid input.");
+      showResult(str.substring(start, end));
+    }
+
+    function rplc() {
+      let str = getInput();
+      let toReplace = prompt("Enter the text to replace:");
+      let replacement = prompt("Enter replacement text:");
+      if (!toReplace) return showResult("No text entered to replace.");
+      showResult(str.replace(toReplace, replacement));
     }
   </script>
+
 </body>
 </html>
