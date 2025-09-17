@@ -1,3 +1,4 @@
+a = []
 a = input("Enter numbers: ").split()
 b = []
 
