@@ -194,8 +194,9 @@
 
     function rplc(){
         let str = document.getElementById("string").value;
-        let str1 = prompt("Enter the string to search: ");
-        let x = str.replace(str,str1);
+        let str1 = prompt("Enter the string to replace: ");
+        let str2 = prompt("Enter the string to be replaced:")
+        let x = str.replace(str1,str2);
         document.getElementById("result").innerHTML = x;
     }
   </script>
