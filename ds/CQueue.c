@@ -1,7 +1,5 @@
-// implementation of circular queue
-
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #define MAX 5
 
@@ -12,84 +10,85 @@ void enqueue(int item);
 void dequeue();
 void display();
 
-void enqueue(int item){
-    if(front==-1 && rear==-1){
-        front++;
-        rear++;
+void enqueue(int item) {
+    // Check if queue is full
+    if ((front == (rear + 1) % MAX)) {
+        printf("\nQueue is full! Cannot enqueue %d\n", item);
+        return;
     }
-    
-    queue[(rear+1)%MAX] = item;
-    printf("\n %d enqueued to queue",item);
+
+    // Initialize front and rear if queue is empty
+    if (front == -1 && rear == -1) {
+        front = 0;
+        rear = 0;
+        queue[rear] = item;
+    } else {
+        rear = (rear + 1) % MAX;
+        queue[rear] = item;
+    }
+    printf("\n%d enqueued to queue\n", item);
     display();
-        
 }
 
-void dequeue(){
-    if(front==-1){
-        printf("\nQueue is empty..!!");
+void dequeue() {
+    if (front == -1) {
+        printf("\nQueue is empty..!!\n");
         return;
     }
 
     int removed = queue[front];
-    if(front==rear){
+    if (front == rear) {
+        // Queue has only one element
         front = rear = -1;
-    }else{
-        front = (front+1)%MAX;
+    } else {
+        front = (front + 1) % MAX;
     }
 
-    printf("\n%d deleted from queue",removed);
+    printf("\n%d dequeued from queue\n", removed);
     display();
 }
 
-void display(){
-    if(front==-1){
-        printf("\nQueue empty....!!");
+void display() {
+    if (front == -1) {
+        printf("\nQueue is empty....!!\n");
         return;
     }
 
-    printf("\nQueue elements are : ");
+    printf("\nQueue elements are: ");
     int i = front;
-    while(i!=rear){
-        printf("%d  ",queue[i]);
-        i = (i+1)%MAX;
+    while (i != rear) {
+        printf("%d  ", queue[i]);
+        i = (i + 1) % MAX;
     }
-
-    printf("\n");
+    printf("%d\n", queue[rear]);  // print the last element
 }
 
-int main(){
+int main() {
+    int choice, item;
 
-    int choice,item;
-    while(1){
-        printf("\nCircular Queue operations : \n");
-        printf("1. Enqueue\n");
-        printf("2. Dequeue\n");
-        printf("3. Display\n");
-        printf("4. Exit\n");
-        printf("\nSelect the operation : ");
-        scanf("%d",&choice);
-        switch(choice){
-            case 1 : 
-                printf("Enter the element to insert to Queue : ");
-                scanf("%d",&item);
+    while (1) {
+        printf("\nCircular Queue Operations:\n");
+        printf("1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n");
+        printf("Select the operation: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter the element to enqueue: ");
+                scanf("%d", &item);
                 enqueue(item);
                 break;
-            
-            case 2 :
+            case 2:
                 dequeue();
                 break;
-            case 3 : display();
-            break;
-
-            case 4 : {
-                printf("Exiting program...!!");
-                exit(0);
-            }
+            case 3:
+                display();
                 break;
-
+            case 4:
+                printf("Exiting program...!!\n");
+                exit(0);
             default:
                 printf("Invalid choice! Try again.\n");
-
         }
     }
 
