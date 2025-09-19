@@ -17,7 +17,7 @@ void display()
     {
         printf("List is Empty...!!\n");
     }
-    printf("NULL");
+    printf("\nNULL");
     while (temp != NULL)
     {
         printf("<-%d->", temp->data);
@@ -192,8 +192,10 @@ void deletionByValue(int value)
     display();
 }
 
-void search(int value) {
-    if (head == NULL) {
+void search(int value)
+{
+    if (head == NULL)
+    {
         printf("The list is empty. Cannot search.\n");
         return;
     }
@@ -201,8 +203,10 @@ void search(int value) {
     struct Node *temp = head;
     int pos = 1;
 
-    while (temp!=NULL) {
-        if (temp->data == value) {
+    while (temp != NULL)
+    {
+        if (temp->data == value)
+        {
             printf("%d is present at position %d\n", value, pos);
             return;
         }
@@ -212,19 +216,46 @@ void search(int value) {
     printf("%d is not present in the linked list\n", value);
 }
 
-void merge(){
-    int n,i,val;
-    printf("Enter the number of elements of linkedlist which is to be merged to the linkedlist");
-    scanf("%d",&n);
-    printf("Enter the elements of linkedlist");
-    for(i=0;i<n;i++){
-        struct Node* head1;
+void merge()
+{
+    int n, i, val;
+    struct Node *head1 = NULL;
+    printf("Enter the number of elements of linkedlist 2 which is to be merged to the linkedlist :\n");
+    scanf("%d", &n);
+    printf("Enter the elements of linkedlist 2 :\n");
+    for (i = 0; i < n; i++)
+    {
         struct Node *new = (struct Node *)malloc(sizeof(struct Node));
-        scanf("%d",&val);
-        new->data=val;
-        new->next=
+        scanf("%d", &val);
+        new->data = val;
+        new->next = head1;
+        new->prev = NULL;
+        if (head1 != NULL)
+        {
+            head1->prev = new; 
+        }
+        head1 = new;
     }
+    printf("Linkedlist 2 is:\n");
+    struct Node *temp = head1;
+    printf("NULL");
+    while (temp != NULL)
+    {
+        printf("<-%d->",temp->data);
+        temp = temp->next;
+    }
+    printf("NULL");
+    struct Node *temp1 = head;
+    while(temp1->next!=NULL){
+        temp1=temp1->next;
+    }
+    temp1->next=head1;
+    head1->prev=temp1;
+    head1=NULL;
+    printf("\nMerged linkedlist is :\n");
+    display();
 }
+
 
 void main()
 {
@@ -281,13 +312,13 @@ void main()
             break;
         case 8:
             printf("Enter the element to Search in the linkedlist :");
-            scanf("%d",&value);
+            scanf("%d", &value);
             search(value);
             break;
         case 9:
             merge();
             break;
-        case 9:
+        case 10:
             exit(1);
             break;
         default:
