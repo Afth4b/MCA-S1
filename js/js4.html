@@ -100,7 +100,7 @@
   <!-- String Functions Section -->
   <div class="card">
     <h1>String Functions</h1>
-    <label for="string">Enter a string:</label>
+    <label for="string">Enter a string : </label>
     <input type="text" id="string" />
     <div>
       <button onclick="stringlen()">String Length</button>
@@ -118,8 +118,111 @@
     <h1 id="result"></h1>
   </div>
 
+    <div class="card">
+    <h1>Math Functions</h1>
+    <label for="string">Enter a number : </label>
+    <input type="text" id="num" />
+    <div>
+      <button onclick="numRound()">Round of</button>
+      <button onclick="toceil()">Ceil</button>
+      <button onclick="tofloor()">Floor</button>
+      <button onclick="totrunc()">Trunc</button>
+      <button onclick="findsign()">Sign</button>
+      <button onclick="power()"> Power</button>
+      <button onclick="squareroot()">Square Root</button>
+      <button onclick="toabs()">Absolute number</button>
+      <button onclick="findsin()">Sin Value</button>
+      <button onclick="findcos()">cos value</button>
+      <button onclick="rplc()">Replace</button>
+    </div>
+    <h1 id="result1"></h1>
+  </div>
+
 
   <script>
+
+    function findcos() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let cos = Math.cos(num);
+      document.getElementById("result1").innerHTML = "Cos value of the number is " + cos;
+    }
+
+    function findsin() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let sin = Math.sin(num);
+      document.getElementById("result1").innerHTML = "Sin value of the number is " + sin;
+    }
+
+    function toabs() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let abs = Math.abs(num);
+      document.getElementById("result1").innerHTML = "Absolute of the number is " + abs;
+    }
+    
+
+    function squareroot() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let sqrt = Math.sqrt(num);
+      document.getElementById("result1").innerHTML = "Square Root of the number is " + sqrt;
+    }
+    
+    function power() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let exp = prompt("Enter the exponent : ");
+      exp = Number(exp);
+      let power = Math.pow(num,exp);
+      document.getElementById("result1").innerHTML = num + "^"+exp+ "  is " + power;
+    }
+
+    function findsign() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let trunc = Math.sign(num);
+      if(trunc==0){
+        document.getElementById("result1").innerHTML = "The number is zero" ;
+      }
+      else if(trunc==1){
+        document.getElementById("result1").innerHTML = "The number is positive" ;
+      }
+      else{
+        document.getElementById("result1").innerHTML = "The number is negative" ;
+      }
+    }
+
+    function totrunc() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let trunc = Math.trunc(num);
+      document.getElementById("result1").innerHTML = "Integer part of the number is " + trunc;
+    }
+    
+
+    function tofloor() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let floor = Math.floor(num);
+      document.getElementById("result1").innerHTML = "Floor of number is " + floor;
+    }
+    
+    function toceil() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let ceil = Math.ceil(num);
+      document.getElementById("result1").innerHTML = "Ceil of number is " + ceil;
+    }
+
+    function numRound() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let round = Math.round(num);
+      document.getElementById("result1").innerHTML = "Round of number is " + round;
+    }
+
     function stringlen() {
       let str = document.getElementById("string").value;
       let len = str.length;
