@@ -133,13 +133,21 @@
       <button onclick="toabs()">Absolute number</button>
       <button onclick="findsin()">Sin Value</button>
       <button onclick="findcos()">cos value</button>
-      <button onclick="rplc()">Replace</button>
+      <button onclick="findlog()">Log</button>
     </div>
     <h1 id="result1"></h1>
   </div>
 
 
   <script>
+
+    function findlog() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let log = Math.log(num);
+      document.getElementById("result1").innerHTML = "Log value of the number is " + log;
+    }
+
 
     function findcos() {
       let num = document.getElementById("num").value;

@@ -1,0 +1,21 @@
+<!--creating calender using JAVASCRIPT-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="abc"></p>
+    <script>
+            var d="<table border='1' ><tr><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th><th>SUM</th></tr>";
+            var t="</table>";
+            d+=t;
+            var c=new Date(2020,0);
+            alert(c);
+            document.getElementById("abc").innerHTML=d;;
+    </script>    
+</body>
+</html>
