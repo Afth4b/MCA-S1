@@ -1,5 +1,5 @@
 a = []
-a = input("Enter numbers: ").split()
+a = input("Enter numbers : ").split()
 b = []
 
 for i in a:
