@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="abc"></p>
+    <script>
+      const car = new Array("BENZ", "BMW", "TATA", "MAHINDRA");
+      car.push("HONDA");
+      document.getElementById("abc").innerHTML = car.join("*");
+      document.getElementById("abc").innerHTML += "<ul type='round'>";
+      for (var i = 0; i < car.length; i++) {
+        
+        document.getElementById("abc").innerHTML += "<li>"+car[i]+"</li>";
+        
+      }
+      document.getElementById("abc").innerHTML += "</ul>";
+    </script>
+  </body>
+</html>

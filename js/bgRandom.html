@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="abc">Click me</button>
+    <script>
+        document.getElementById('abc').addEventListener("click",myFunction);
+        var rcolor="#";
+        function myFunction()
+        {
+            // document.body.style.background="green";
+            for(var i=0;i<6;i++){
+            rcolor+=Math.floor(Math.random()*10);
+            }
+            alert(rcolor);
+            document.body.style.background=rcolor;
+        }
+    </script>
+
+</body>
+</html>
