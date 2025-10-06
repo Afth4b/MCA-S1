@@ -9,14 +9,15 @@
     <button id="abc">Click me</button>
     <script>
         document.getElementById('abc').addEventListener("click",myFunction);
-        var rcolor="#";
+        
         function myFunction()
         {
             // document.body.style.background="green";
+            var rcolor="#";
             for(var i=0;i<6;i++){
             rcolor+=Math.floor(Math.random()*10);
             }
-            alert(rcolor);
+            // alert(rcolor);
             document.body.style.background=rcolor;
         }
     </script>

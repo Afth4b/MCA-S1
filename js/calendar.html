@@ -74,6 +74,8 @@
         background-color: #357ac5;
       }
 
+      
+
     </style>
     <div class="div">
       <label for="">Enter year:</label>
@@ -89,44 +91,58 @@
         <option value="6">July</option>
         <option value="7">August</option>
         <option value="8">September</option>
-        <option value="9">October</option>
+        <option value="9">October</option> 
         <option value="10">November</option>
         <option value="11">December</option>
       </select> -->
       <button onclick="calender()" class="btn">Generate</button>
     </div>
-    <p id="abc"></p>
+    <div class="grid">
+      <p id="abc"></p>
+    </div>
     <script>
       function calender() {
         var yr = Number(document.getElementById("year").value);
-        var calender="";
+        var calender = "";
         var monthNames = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-      ];
-
-
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
 
         for (var m = 0; m < 12; m++) {
           var d =
-            "<div class='grid'><h1 style='text-align:center;color:red;'>"+monthNames[m]+" "+yr+"</h1><table border='1' ><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>";
+            "<div ><h1 style='text-align:center;color:red;'>" +
+            monthNames[m] +
+            " " +
+            yr +
+            "</h1><table border='1' ><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>";
           var c = new Date(yr, m, 1);
           var day = c.getDay();
           for (var i = 0; i < day; i++) {
             d += "<td></td>";
           }
-        
-        while (c.getMonth() == m) {
-          d += "<td>" + c.getDate() + "</td>";
-          if (c.getDay() % 7 == 6) {
-            d += "</tr><tr>";
+
+          while (c.getMonth() == m) {
+            d += "<td>" + c.getDate() + "</td>";
+            if (c.getDay() % 7 == 6) {
+              d += "</tr><tr>";
+            }
+            c.setDate(c.getDate() + 1);
           }
-          c.setDate(c.getDate() + 1);
+          var t = "</table></div>";
+          d += t;
+          calender += d;
         }
-        var t = "</table></div>";
-        d += t;
-        calender+=d;
-      }
         document.getElementById("abc").innerHTML = calender;
       }
     </script>
