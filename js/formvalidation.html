@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JOB APPLICATION</title>
+
+    <style>
+      body {
+        background-color: #f5f5f5;
+      }
+
+      marquee {
+        height: 60px;
+        font-style: italic;
+        color: rgb(84, 56, 21);
+        font-size: larger;
+      }
+
+      .form {
+        width: 50%;
+        background-color: #fffbf0;
+        margin: 50px auto;
+        border: 1px solid rgb(84, 56, 21);
+        border-radius: 70px 0 70px 0;
+        padding: 50px;
+        font-size: 20px;
+        box-shadow: 0 8px 20px #63431c;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+        font-size: 22px;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      select {
+        border-radius: 5px;
+        width: 300px;
+        height: 25px;
+        border: 2px solid rgb(84, 56, 21);
+      }
+
+      input[type="file"] {
+        border-radius: 5px;
+        width: 80px;
+        height: 40px;
+        font-size: large;
+        border: 2px solid rgb(84, 56, 21);
+      }
+
+      input[type="reset"],
+      input[type="submit"] {
+        border-radius: 5px;
+        width: 100px;
+        font-weight: bolder;
+        background-color: rgb(84, 56, 21);
+        color: white;
+        height: 25px;
+        border: 2px solid rgb(84, 56, 21);
+        font-size: 18px;
+      }
+
+      p {
+        color: red;
+        font-size: x-small;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <marquee
+        scrollamount="12"
+        behavior="alternate"
+        onmouseover="this.stop();"
+        onmouseout="this.start();"
+        direction="right"
+      >
+        <h1>WELCOME TO FRESHERS WORLD !!</h1>
+      </marquee>
+    </div>
+
+    <div class="form">
+      <form action="" method="POST" onsubmit="return validation()">
+        <table>
+          <caption>
+            <h1>Registration Form</h1>
+          </caption>
+          <tr>
+            <th>Name <font color="red">*</font></th>
+            <td>
+              <input type="text" id="name" />
+              <p id="NAME"></p>
+            </td>
+          </tr>
+          <tr>
+            <th>Age <font color="red">*</font></th>
+            <td>
+              <input type="text" id="age" />
+              <p id="AGE"></p>
+            </td>
+          </tr>
+
+          <tr>
+            <th>Password <font color="red">*</font></th>
+            <td><input type="password" id="pass"/>
+            <p id="PASS"></p></td>
+          </tr>
+
+          <tr>
+            <th>Re-Enter Password <font color="red">*</font></th>
+            <td><input type="password" id="repass" />
+            <p id="REPASS"></p></td>
+          </tr>
+
+          <tr>
+            <th rowspan="4">Select your secuity question</th>
+            <td><input type="radio" name="sec" />What is your petname ?</td>
+          </tr>
+
+          <tr>
+            <td><input type="radio" name="sec" />Who is your bestfriend ?</td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="radio" name="sec" />What is your favourite colour ?
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="radio" name="sec" />Who is your favourite teacher ?
+            </td>
+          </tr>
+
+          <tr>
+            <th>Answer of your security question <font color="red">*</font></th>
+            <td><input type="text" /></td>
+          </tr>
+
+          <tr>
+            <th>E-mail ID <font color="red">*</font></th>
+            <td><input type="email" /></td>
+          </tr>
+
+          <tr>
+            <th>Languages known</th>
+            <td>
+              <input type="checkbox" />Malayalam
+              <input type="checkbox" />English <input type="checkbox" />Hindi
+            </td>
+          </tr>
+
+          <tr>
+            <th>Phone Number <font color="red">*</font></th>
+            <td>
+              <table>
+                <tr>
+                  <th>Home</th>
+                  <th>Office</th>
+                </tr>
+                <tr>
+                  <td><input type="number" /></td>
+                  <td><input type="number" /></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <th>Upload CV <font color="red">*</font></th>
+            <td><input style="border: none" type="file" /></td>
+          </tr>
+
+          <tr>
+            <td>
+              <center><input type="reset" /></center>
+            </td>
+            <td>
+              <center><input type="submit" /></center>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <script>
+        function validation() {
+            nameValidation();
+            ageValidation();
+            passValidation();
+            rePassValidation();
+        if (!nameValidation() || !ageValidation() || !passVAlidation() || !rePassValidation()) {
+            return false;
+        }
+        return true;
+        }
+    
+
+        function nameValidation(){
+            let x = document.getElementById("name").value;
+            if (x === "") {
+                document.getElementById("NAME").innerHTML = "Name cannot be empty";
+                return false;
+            } else {
+                document.getElementById("NAME").innerHTML = ""; 
+            }
+
+        }
+          
+        function ageValidation(){
+            let y = document.getElementById("age").value;
+            if (y === "") {
+                document.getElementById("AGE").innerHTML = "Age cannot be empty";
+                return false;
+            }
+            if (isNaN(y)) {
+                document.getElementById("AGE").innerHTML = "Age must be a number";
+                return false;
+            }
+
+            y = Number(y);
+            if (y < 18 || y > 60) {
+                document.getElementById("AGE").innerHTML = "Age must be between 18 and 60";
+                return false;
+            } else {
+                document.getElementById("AGE").innerHTML = ""; 
+            }
+
+          return true;
+        }
+
+        function passValidation(){
+            let z=document.getElementById("pass").value;
+            if(z === ""){
+                document.getElementById("PASS").innerHTML="password cannot be empty";
+                return false;
+            }
+            if(z.length===8){
+                document.getElementById("PASS").innerHTML="";
+                return true;
+            }
+            else{
+                document.getElementById("PASS").innerHTML="password must be 8 charecters";
+                return false;
+            }
+        }
+      
+        function rePassValidation(){
+            let z=document.getElementById("pass").value;
+            let s=document.getElementById("repass").value;
+            if(z===s){
+                document.getElementById("REPASS").innerHTML="";
+                return true;
+            }
+            else{
+                document.getElementById("REPASS").innerHTML="passwords do not match";
+                return false;
+            }   
+        }
+          
+    </script>
+  </body>
+</html>

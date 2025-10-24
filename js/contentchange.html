@@ -1,27 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hover Content Change</title>
+  <style>
+    #abc {
+      width: 400px;
+      border: 2px solid #000;
+      padding: 10px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    img {
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
-    <div id="abc">
-        <h1>Aj gaming Zone</h1>  
-        <img src="https://yt3.googleusercontent.com/ytc/AIdro_lzQ0mXCr5relrxzH5wMSbzcRotu2CJSCDS8rIvIgZCsi0=s900-c-k-c0x00ffffff-no-rj" width="200px" height="200px">
-        AJ Gaming Zone is a prominent Malayalam-language YouTube channel known 
-        for its engaging content centered around Garena Free Fire, a popular battle
-         royale mobile game. The channel is helmed by Ajmal, who is affectionately 
-         referred to as "King AJMal" by his fans.      
-    </div>
-    <script>
+  <div id="abc">
+    <h1>Aj gaming Zone</h1>
+    <img src="https://yt3.googleusercontent.com/ytc/AIdro_lzQ0mXCr5relrxzH5wMSbzcRotu2CJSCDS8rIvIgZCsi0=s900-c-k-c0x00ffffff-no-rj" width="200" height="200">
+    <p>AJ Gaming Zone is a prominent Malayalam-language YouTube channel known for its engaging content centered around Garena Free Fire. The channel is helmed by Ajmal, affectionately called 'King AJMal' by fans.</p>
+  </div>
 
-        document.getElementById('abc').addEventListener("mouseover",myFunction);
+  <script>
+    const abc = document.getElementById("abc");
 
-        function myFunction(){
-            d="<h1>D2K ARMY Ajmal UK</h1><img src='https://i.ytimg.com/vi/uvAhq65maM8/hq2.jpg?sqp=-oaymwEkCOgCEOgCSFryq4qpAxYIARUAAAAAJQAAyEI9AICiQ3gB0AEB&rs=AOn4CLClfEoqk0thPI06h4-PDqIVBHa0HA' width='200px' height='200px'><p>D2K ARMY is a prominent Malayalam-language gaming YouTube channel based in Kannur, Kerala. Established in September 2019, the channel has rapidly gained popularity, amassing over 557K subscribers and more than 82 million views to date</p>";
-            document.getElementById('abc').innerHTML=d;
-        }
-    </script>
+    abc.addEventListener("mouseover", myFunction);
+    abc.addEventListener("mouseleave", function2);
+
+    function myFunction() {
+      const d = `
+        <h1>D2K ARMY Ajmal UK</h1>
+        <img src="https://i.ytimg.com/vi/uvAhq65maM8/hq2.jpg?sqp=-oaymwEkCOgCEOgCSFryq4qpAxYIARUAAAAAJQAAyEI9AICiQ3gB0AEB&rs=AOn4CLClfEoqk0thPI06h4-PDqIVBHa0HA" width="200" height="200">
+        <p>D2K ARMY is a prominent Malayalam-language gaming YouTube channel based in Kannur, Kerala. Established in September 2019, the channel has rapidly gained popularity with over 557K subscribers and 82M+ views.</p>
+      `;
+      abc.innerHTML = d;
+    }
+
+    function function2() {
+      const h = `
+        <h1>Aj gaming Zone</h1>
+        <img src="https://yt3.googleusercontent.com/ytc/AIdro_lzQ0mXCr5relrxzH5wMSbzcRotu2CJSCDS8rIvIgZCsi0=s900-c-k-c0x00ffffff-no-rj" width="200" height="200">
+        <p>AJ Gaming Zone is a prominent Malayalam-language YouTube channel known for its engaging content centered around Garena Free Fire. The channel is helmed by Ajmal, affectionately called 'King AJMal' by fans.</p>
+      `;
+      abc.innerHTML = h;
+    }
+  </script>
 </body>
 </html>
