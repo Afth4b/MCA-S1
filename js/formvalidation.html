@@ -140,20 +140,24 @@
           </tr>
 
           <tr>
-            <th>Answer of your security question <font color="red">*</font></th>
+            <th>Answer of your security question </th>
             <td><input type="text" /></td>
           </tr>
 
           <tr>
             <th>E-mail ID <font color="red">*</font></th>
-            <td><input type="email" /></td>
+            <td><input type="email" id="em"/>
+            <p id="EMAIL"></p>
+            </td>
           </tr>
 
           <tr>
             <th>Languages known</th>
             <td>
-              <input type="checkbox" />Malayalam
-              <input type="checkbox" />English <input type="checkbox" />Hindi
+              <input type="checkbox" name="lang"/>Malayalam
+              <input type="checkbox" name="lang"/>English 
+              <input type="checkbox" name="lang"/>Hindi
+              <p id="LANG"></p>
             </td>
           </tr>
 
@@ -166,16 +170,18 @@
                   <th>Office</th>
                 </tr>
                 <tr>
-                  <td><input type="number" /></td>
-                  <td><input type="number" /></td>
+                  <td><input type="number" id="ph1"/></td>
+                  <td><input type="number" id="ph2"/></td>
                 </tr>
               </table>
+              <p id="PH"></p>
             </td>
           </tr>
 
           <tr>
             <th>Upload CV <font color="red">*</font></th>
-            <td><input style="border: none" type="file" /></td>
+            <td><input style="border: none" type="file" id="cv"/>
+            <p id="CV"></p></td>
           </tr>
 
           <tr>
@@ -196,7 +202,11 @@
             ageValidation();
             passValidation();
             rePassValidation();
-        if (!nameValidation() || !ageValidation() || !passVAlidation() || !rePassValidation()) {
+            emailValidation();
+            langValidation();
+            phValidation();
+            fileValidation();
+        if (!nameValidation() || !ageValidation() || !passVAlidation() || !rePassValidation() || !emailVAlidation() || !langValidation() || !phValidation() || !fileValidation()) {
             return false;
         }
         return true;
@@ -255,6 +265,10 @@
         function rePassValidation(){
             let z=document.getElementById("pass").value;
             let s=document.getElementById("repass").value;
+            if(z===""){
+                document.getElementById("REPASS").innerHTML="password cannot be empty";
+                return false;
+            }
             if(z===s){
                 document.getElementById("REPASS").innerHTML="";
                 return true;
@@ -263,6 +277,56 @@
                 document.getElementById("REPASS").innerHTML="passwords do not match";
                 return false;
             }   
+        }
+        
+
+        function emailValidation(){
+          let e=document.getElementById("em").value;
+          if(e===""){
+          document.getElementById("EMAIL").innerHTML="email cannot be empty";
+          return false;
+          }
+        }
+
+        function langValidation() {
+        let c = document.querySelectorAll('input[name="lang"]:checked');
+
+        if (c.length === 0) {
+          document.getElementById("LANG").innerHTML = "Select at least one language.";
+          return false;
+          } else {
+          document.getElementById("LANG").innerHTML = "";
+          return true;
+          }
+        }
+
+        function phValidation(){
+          let p1=document.getElementById("ph1").value;
+          let p2=document.getElementById("ph2").value;
+          if (p1 === "" || p2 === ""){
+            document.getElementById("PH").innerHTML="enter both phone numbers";
+            return false;
+          }
+          else if(p1.length===10 || p2.length===10){
+            document.getElementById("PH").innerHTML="phone number must be 10 digits";
+            return false;
+          }
+          else {
+            document.getElementById("PH").innerHTML="";
+            return true;
+          }
+        }
+
+        function fileValidation(){
+          let cv=document.getElementById("cv").value;
+          if(cv===""){
+            document.getElementById("CV").innerHTML="upload your cv";
+            return false;
+          }
+          else{
+            document.getElementById("CV").innerHTML="";
+            return true;
+          }
         }
           
     </script>
