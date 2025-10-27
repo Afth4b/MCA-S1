@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProgressReport</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            background-color: #f0f2f5;
+        }
+
+        #main {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        caption {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        input[type="reset"] {
+            background-color: #6c757d;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="reset"]:hover {
+            background-color: #5a6268;
+        }
+
+        tr:last-child th {
+            text-align: center;
+        }
+
+        /* Style for Calculate button */
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: #28a745; /* Green color for calculation */
+            color: white;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+        }
+
+        button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        /* Make total input consistent with other inputs */
+        #total {
+            width: 100px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            background-color: #f7f7f7;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <form action="progressReport.php" method="post">
+            <table>
+                <caption>ENTER YOUR DETAILS</caption>
+                <tr>
+                    <th>Name :</th>
+                    <td><input type="text" name="name" id="name" required /></td>
+                </tr>
+                <tr>
+                    <th>Roll No :</th>
+                    <td><input type="text" name="rollno" id="rollno" required /></td>
+                </tr>
+            </table>
+
+            <table>
+                <caption>Enter Your Marks out of 60</caption>
+                <tr>
+                    <th>Digital Fundamentals :</th>
+                    <td><input type="number" id="m1" name="m1" min="0" max="60" required /></td>
+                </tr>
+                <tr>
+                    <th>Data Structure :</th>
+                    <td><input type="number" id="m2" name="m2" min="0" max="60" required /></td>
+                </tr>
+                <tr>
+                    <th>Maths :</th>
+                    <td><input type="number" id="m3" name="m3" min="0" max="60" required /></td>
+                </tr>
+                <tr>
+                    <th>Software Engineering :</th>
+                    <td><input type="number" id="m4" name="m4" min="0" max="60" required /></td>
+                </tr>
+                <tr>
+                    <th>Python Programming :</th>
+                    <td><input type="number" id="m5" name="m5" min="0" max="60" required /></td>
+                </tr>
+                <tr>
+                    <th>Web Programming :</th>
+                    <td><input type="number" id="m6" name="m6" min="0" max="60" required /></td>
+                </tr>
+                <tr>
+                    <th>Calculate Total</th>
+                    <th>
+                        <input type="number" id="total" readonly />
+                        <button type="button" onclick="calculateTotal()">Calculate</button>
+                    </th>
+                </tr>
+                <tr>
+                    <th><input type="submit" /></th>
+                    <th><input type="reset" /></th>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <script>
+        function calculateTotal() {
+            const m1 = Number(document.getElementById("m1").value) ;
+            const m2 = Number(document.getElementById("m2").value) ;
+            const m3 = Number(document.getElementById("m3").value) ;
+            const m4 = Number(document.getElementById("m4").value) ;
+            const m5 = Number(document.getElementById("m5").value) ;
+            const m6 = Number(document.getElementById("m6").value) ;
+
+            const totalMarks = m1 + m2 + m3 + m4 + m5 + m6;
+
+            document.getElementById("total").value = totalMarks;
+        }
+    </script>
+</body>
+</html>
