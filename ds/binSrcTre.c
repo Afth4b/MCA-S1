@@ -1,6 +1,7 @@
 // Binary search tree all operations
 
 #include<stdio.h>
+#include<stdlib.h>
 struct Node{
     int data;
     struct Node* left;
@@ -37,16 +38,16 @@ struct Node* findMin(struct Node* root){
     return root;
 }
 
-struct Node* delete(struct Node* root,int value){
+struct Node* deleteNode(struct Node* root,int value){
     if(root==NULL){
         printf("\nDeletion not possible..!!");
         return root;
     }
 
     if (value<root->data){
-        root->left = delete(root->left,value);
+        root->left = deleteNode(root->left,value);
     }else if(value>root->data){
-        root->right = delete(root->right,value);
+        root->right = deleteNode(root->right,value);
     }else{
         if(root->left == NULL){
             struct Node* temp = root->right;
@@ -80,6 +81,14 @@ struct Node* search(struct Node* root,int value){
 
 }
 
+void inorder(struct Node* root){
+    if(root!=NULL){
+        inorder(root->left);
+        printf("%d",root->data);
+        inorder(root->right);
+    }
+}
+
 
 
 void main(){
@@ -91,19 +100,24 @@ void main(){
         printf("\n1.Insert a node");
         printf("\n2.Delete a node");
         printf("\n3.Search a node");
-        printf("\nTree Traversal");
+        printf("\n4.Tree Traversal");
+        printf("\n5.Exit");
 
         switch(choice){
             case 1 :
                 printf("\nEnter value to insert : ");
                 scanf("%d",&value);
                 root = insert(root,value);
+                printf("\nBST After insertion : \n");
+                inorder(root);
             break;
 
             case 2 :
                 printf("\nEnter the value of the node to be deleted : ");
                 scanf("%d",value);
-                root = delete(root,value);
+                root = deleteNode(root,value);
+                printf("\nBST After deletion : \n");
+                inorder(root);
                 break;
 
             case 3 :
@@ -111,6 +125,19 @@ void main(){
                 scanf("%d",&value);
                 root = search(root,value);
                 break;
+
+            case 4 :
+                printf("\nBST inorder traversal : \n");
+                inorder(root);
+                break;
+
+            case 5 :
+                printf("\nExiting program....!!!");
+                exit(0);
+                break;
+
+            default :
+                printf("\nInvalid choice..!!..Try again..!!");
         }
 
     }
