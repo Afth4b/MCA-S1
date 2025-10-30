@@ -15,6 +15,7 @@ struct Node{
 int item;
 struct Node* root=NULL;
 
+//insertion operation
 struct Node* insert(struct Node* root,struct Node* new){
     if(root==NULL){
         root=new;
@@ -37,6 +38,7 @@ void insertion(){
     display();
 }
 
+//displaying the tree
 void preOrder(struct Node* root){
     if(root==NULL)
         return;
@@ -70,11 +72,19 @@ int display(){
     inOrder(root);
 }
 
+struct Node* findMin(struct Node* root){
+    while(root->left!=NULL){
+        root=root->left;
+    } 
+    return root;
+}
+
 struct Node* delete(struct Node* root,int item){
     if(root==NULL){
         printf("Tree is empty...!!!");
         return root;
     }
+    struct Node* temp;
     if(item < root->data){
         root->left=delete(root->left,item);
     }
@@ -82,15 +92,48 @@ struct Node* delete(struct Node* root,int item){
         root->right=delete(root->right,item);
     }
     else{
-        struct Node* temp;
-
-    
+        // has only single child
+        if(root->left==NULL){
+            temp=root->right;
+            free(root);
+            return temp;
+        } else if(root->right==NULL){
+            temp=root->left;
+            free(root);
+            return temp;
+        }
+        //has 2 child
+        root->data=findMin(root->right)->data;
+        root->right=delete(root->right,root->data);
     }
+    return root;
 }
 void deletion(){
     printf("Element :");
     scanf("%d",&item);
     root = delete(root,item);
+    display();
+}
+
+struct Node* srch(struct Node* root,int item){
+    if(root==NULL){
+        printf("Element not found....!!!");
+        return NULL;
+    }
+    if(root->data==item){
+        printf("Element found..!!");
+        return root;
+    }
+    else if(item < root->data){
+        return srch(root->left,item);
+    }else{
+        return srch(root->right,item);
+    }
+}
+void search(){
+    printf("Element:");
+    scanf("%d",&item);
+    srch(root,item);
 }
 
 int main(){
@@ -112,6 +155,7 @@ int main(){
             deletion();
             break;
             case 3:
+            search();
             break;
             case 4:
             display();
