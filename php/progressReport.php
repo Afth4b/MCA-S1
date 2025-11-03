@@ -65,8 +65,17 @@
 </html>
 
 <?php
+
+$conn = mysqli_connect('localhost','root','','student');
+
+if(!$conn){
+    echo "<script>alert('connection error')</script>";
+}
+
+
 $name=$_POST["name"];
 $roll=$_POST["rollno"];
+$gender = $_POST["gender"];
 $m1=$_POST["m1"];
 $m2=$_POST["m2"];
 $m3=$_POST["m3"];
@@ -95,6 +104,23 @@ else if($p>=50){
 else{
     $grade="F";
 }
+
+$sql = "SELECT rollno FROM mark WHERE rollno = $roll";
+
+$result = mysqli_query($conn,$sql);
+
+if(mysqli_num_rows($result)>0){
+    echo "<script>alert('This roll number already exists')</script>";
+    
+}else{
+    $sql = "INSERT INTO mark VALUES ($roll,'$name',$m1,$m2,$m3,$m4,$m5,$m6,$total,$p,'$grade','$gender')";
+
+    if(mysqli_query($conn,$sql)){
+        echo "<script>alert('Data inserted successfully');document.location='progressReport.html'</script>";
+}
+}
+
+
 
 ?>
 
