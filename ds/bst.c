@@ -45,7 +45,6 @@ void preOrder(struct Node* root){
     printf("%d-->",root->data);
     preOrder(root->left);
     preOrder(root->right);
-
 }
 void inOrder(struct Node* root){
     if(root==NULL)
