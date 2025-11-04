@@ -1,5 +1,6 @@
-<label for="">Roll No : </label>
-<select name="" id="">
+<form action="dp.php" method="post">
+<label for="" >Roll No : </label>
+<select name="roll" id="">
 
 <?php
 $conn = mysqli_connect('localhost','root','','student');
@@ -16,7 +17,11 @@ if(mysqli_num_rows($result)>0){
     }
 }
 
+
 ?>
 
 </select>
+<button type="submit" name="search">Search</button>
+</form>
+
 
