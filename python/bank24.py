@@ -10,20 +10,17 @@ class account:
 
     def deposit(self,amount):
         if amount>0:
-            bal+=amount
+            self.bal+=amount
             print(f"Amount {amount} added succesfully")
-            print(f"Account no :{self.accno} Name :{self.name} Type :{self.type} Balance :{self.bal}")
         else:
             print("Invalid amount")
 
     def withdraw(self,amount):
-        if amount>bal:
+        if amount>self.bal:
             print("Insufficient Balance")
-            print(f"Account no :{self.accno} Name :{self.name} Type :{self.type} Balance :{self.bal}")
         else:
-            bal-=amount
+            self.bal-=amount
             print(f"Amount {amount} withdrawal successfull")
-            print(f"Account no :{self.accno} Name :{self.name} Type :{self.type} Balance :{self.bal}")
 
     def display(self):
         print(f"Account no :{self.accno} Name :{self.name} Type :{self.type} Balance :{self.bal}")
@@ -35,6 +32,15 @@ type=input("Enter Account Type :")
 
 member=account(accno,name,type,0)
 
-while true:
-    member.display()
-    t=int(input("Enter 1 to DEPOSIT , 2 to WITHDRAW "))
+while True:
+    t=int(input("Enter 1 to DEPOSIT , 2 to WITHDRAW , 3 to BALANCE ENQUIRY , 4 to EXIT:"))
+    if t==1:
+        member.deposit(int(input("Enter the amount to deposit :")))
+    elif t==2:
+        member.withdraw(int(input("Enter the amount to withdraw :")))
+    elif t==3:
+        member.display()
+    elif t==4:
+        exit()
+    else :
+        print("Invalid choice!!!!")
