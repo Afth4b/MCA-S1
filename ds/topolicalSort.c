@@ -38,23 +38,24 @@ int main(){
     }
     //enqueue vertices have indegree 0
     for(i=0;i<n;i++){
-        if(indegree==0){
+        if(indegree[i]==0){
             queue[rear++]=i;
         }
     }
     
-    while(front<=rear){
-        int node=queue[front++];
-        topo[count++]=node;
-        for(i=0;i<n;i++){
-            if(a[node][i]==1){
+    while(front < rear) {
+        int node = queue[front++];
+        topo[count++] = node;
+
+        for(i = 0; i < n; i++) {
+            if(a[node][i] == 1) {
                 indegree[i]--;
-            }
-            if(indegree[i]==0){
-                queue[rear++]=i;
+                if(indegree[i] == 0)
+                    queue[rear++] = i;
             }
         }
     }
+
     if(count!=n){
         printf("Cycle detected !!");
     }else{
