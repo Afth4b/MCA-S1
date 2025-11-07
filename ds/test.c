@@ -1,92 +1,51 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-struct Node {
-    int data;
-    struct Node* next;
-};
-
-// Create a new node
-struct Node* CreateNode(int data) {
-    struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
-    if (!newNode) {
-        printf("Memory error\n");
-        exit(1);
-    }
-    newNode->data = data;
-    newNode->next = NULL;
-    return newNode;
-}
-
-// Function to insert node at the end of the linked list
-void insertAtEnd(struct Node** head, int data) {
-    struct Node* newNode = CreateNode(data);
-    if (*head == NULL) {
-        *head = newNode;
-    } else {
-        struct Node* temp = *head;
-        while (temp->next != NULL)
-            temp = temp->next;
-        temp->next = newNode;
-    }
-}
-
-// Function to create a linked list
-void createLL(struct Node** head) {
-    char choice = 'y';
-    int item;
-    while (choice == 'y' || choice == 'Y') {
-        printf("Enter the element to insert to List: ");
-        scanf("%d", &item);
-        insertAtEnd(head, item);
-
-        printf("Do you want to insert another element? (y/n): ");
-        scanf(" %c", &choice);  // space before %c to consume newline
-    }
-}
-
-// Function to print linked list
-void printLL(struct Node* head) {
-    struct Node* temp = head;
-    while (temp != NULL) {
-        printf("%d -> ", temp->data);
-        temp = temp->next;
-    }
-    printf("NULL\n");
-}
-
-// Function to merge two linked lists by concatenation
-struct Node* mergeLL(struct Node* head1, struct Node* head2) {
-    if (head1 == NULL) return head2;
-    if (head2 == NULL) return head1;
-
-    struct Node* temp = head1;
-    while (temp->next != NULL)
-        temp = temp->next;
-    temp->next = head2;
-    return head1;
-}
+#define MAX 10
 
 int main() {
-    struct Node* head1 = NULL;
-    struct Node* head2 = NULL;
+    int n, i, j;
+    int adj[MAX][MAX];
+    int indegree[MAX] = {0}, queue[MAX], front = 0, rear = -1;
+    int count = 0;
 
-    printf("Creating linked list 1:\n");
-    createLL(&head1);
+    printf("Enter number of vertices: ");
+    scanf("%d", &n);
 
-    printf("\nCreating linked list 2:\n");
-    createLL(&head2);
+    printf("Enter adjacency matrix:\n");
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            scanf("%d", &adj[i][j]);
+            if (adj[i][j] == 1)
+                indegree[j]++;   // Count indegree of each vertex
+        }
+    }
 
-    printf("\nLinked List 1: ");
-    printLL(head1);
+    // Enqueue all vertices with indegree 0
+    for (i = 0; i < n; i++) {
+        if (indegree[i] == 0)
+            queue[++rear] = i;
+    }
 
-    printf("Linked List 2: ");
-    printLL(head2);
+    printf("\nTopological Order: ");
 
-    struct Node* mergedHead = mergeLL(head1, head2);
+    while (front <= rear) {
+        int u = queue[front++];  // Dequeue vertex
+        printf("%d ", u);    // Print vertex (1-based index)
+        count++;
 
-    printf("\nMerged Linked List: ");
-    printLL(mergedHead);
+        // For all adjacent vertices of u
+        for (i = 0; i < n; i++) {
+            if (adj[u][i] == 1) {
+                indegree[i]--;
+                if (indegree[i] == 0)
+                    queue[++rear] = i;
+            }
+        }
+    }
+
+    if (count != n)
+        printf("\nGraph has a cycle. Topological sorting not possible.\n");
+    else
+        printf("\n");
 
     return 0;
 }
