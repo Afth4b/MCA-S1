@@ -1,51 +1,68 @@
 #include <stdio.h>
+#include <limits.h>
+
 #define MAX 10
+
+void prims(int graph[MAX][MAX], int n);
 
 int main() {
     int n, i, j;
-    int adj[MAX][MAX];
-    int indegree[MAX] = {0}, queue[MAX], front = 0, rear = -1;
-    int count = 0;
+    int graph[MAX][MAX];
 
-    printf("Enter number of vertices: ");
+    printf("Enter the number of vertices: ");
     scanf("%d", &n);
 
-    printf("Enter adjacency matrix:\n");
+    printf("Enter the adjacency matrix (use 0 if no edge):\n");
     for (i = 0; i < n; i++) {
         for (j = 0; j < n; j++) {
-            scanf("%d", &adj[i][j]);
-            if (adj[i][j] == 1)
-                indegree[j]++;   // Count indegree of each vertex
+            scanf("%d", &graph[i][j]);
+            if (graph[i][j] == 0 && i != j)
+                graph[i][j] = INT_MAX; // No edge represented by infinity
         }
     }
 
-    // Enqueue all vertices with indegree 0
-    for (i = 0; i < n; i++) {
-        if (indegree[i] == 0)
-            queue[++rear] = i;
-    }
-
-    printf("\nTopological Order: ");
-
-    while (front <= rear) {
-        int u = queue[front++];  // Dequeue vertex
-        printf("%d ", u);    // Print vertex (1-based index)
-        count++;
-
-        // For all adjacent vertices of u
-        for (i = 0; i < n; i++) {
-            if (adj[u][i] == 1) {
-                indegree[i]--;
-                if (indegree[i] == 0)
-                    queue[++rear] = i;
-            }
-        }
-    }
-
-    if (count != n)
-        printf("\nGraph has a cycle. Topological sorting not possible.\n");
-    else
-        printf("\n");
+    prims(graph, n);
 
     return 0;
+}
+
+// Function to implement Prim's Algorithm
+void prims(int graph[MAX][MAX], int n) {
+    int selected[MAX];
+    int no_of_edges = 0;
+    int i, j, min, x, y, total_cost = 0;
+
+    // Initially, no vertices are selected
+    for (i = 0; i < n; i++)
+        selected[i] = 0;
+
+    // Start from vertex 0
+    selected[0] = 1;
+
+    printf("\nEdges in Minimum Spanning Tree:\n");
+
+    while (no_of_edges < n - 1) {
+        min = INT_MAX;
+        x = 0;
+        y = 0;
+
+        for (i = 0; i < n; i++) {
+            if (selected[i]) {
+                for (j = 0; j < n; j++) {
+                    if (!selected[j] && graph[i][j] < min) {
+                        min = graph[i][j];
+                        x = i;
+                        y = j;
+                    }
+                }
+            }
+        }
+
+        printf("%d - %d : %d\n", x, y, min);
+        total_cost += min;
+        selected[y] = 1;
+        no_of_edges++;
+    }
+
+    printf("\nTotal cost of Minimum Spanning Tree = %d\n", total_cost);
 }
