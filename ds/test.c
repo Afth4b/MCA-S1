@@ -3,66 +3,63 @@
 
 #define MAX 10
 
-void prims(int graph[MAX][MAX], int n);
+int minKey(int key[], int mstSet[], int n) {
+    int min = INT_MAX, min_index;
 
-int main() {
-    int n, i, j;
-    int graph[MAX][MAX];
+    for (int i = 0; i < n; i++)
+        if (mstSet[i] == 0 && key[i] < min)
+            min = key[i], min_index = i;
 
-    printf("Enter the number of vertices: ");
-    scanf("%d", &n);
-
-    printf("Enter the adjacency matrix (use 0 if no edge):\n");
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            scanf("%d", &graph[i][j]);
-            if (graph[i][j] == 0 && i != j)
-                graph[i][j] = INT_MAX; // No edge represented by infinity
-        }
-    }
-
-    prims(graph, n);
-
-    return 0;
+    return min_index;
 }
 
-// Function to implement Prim's Algorithm
-void prims(int graph[MAX][MAX], int n) {
-    int selected[MAX];
-    int no_of_edges = 0;
-    int i, j, min, x, y, total_cost = 0;
+void prim(int n, int graph[MAX][MAX]) {
+    int parent[MAX];
+    int key[MAX];
+    int mstSet[MAX];
 
-    // Initially, no vertices are selected
-    for (i = 0; i < n; i++)
-        selected[i] = 0;
-
-    // Start from vertex 0
-    selected[0] = 1;
-
-    printf("\nEdges in Minimum Spanning Tree:\n");
-
-    while (no_of_edges < n - 1) {
-        min = INT_MAX;
-        x = 0;
-        y = 0;
-
-        for (i = 0; i < n; i++) {
-            if (selected[i]) {
-                for (j = 0; j < n; j++) {
-                    if (!selected[j] && graph[i][j] < min) {
-                        min = graph[i][j];
-                        x = i;
-                        y = j;
-                    }
-                }
-            }
-        }
-
-        printf("%d - %d : %d\n", x, y, min);
-        total_cost += min;
-        selected[y] = 1;
-        no_of_edges++;
+    for (int i = 0; i < n; i++) {
+        key[i] = INT_MAX;
+        mstSet[i] = 0;
     }
 
-    printf("\nTotal cost of Minimum Spanning Tree = %d\n", total_cost);
+    key[0] = 0;       // Start at vertex 0
+    parent[0] = -1;   // Root has no parent
+
+    for (int count = 0; count < n - 1; count++) {
+        int u = minKey(key, mstSet, n);
+        mstSet[u] = 1;
+
+        for (int v = 0; v < n; v++) {
+            if (graph[u][v] && mstSet[v] == 0 && graph[u][v] < key[v]) {
+                parent[v] = u;
+                key[v] = graph[u][v];
+            }
+        }
+    }
+
+    printf("\nMST Edges:\n");
+    int sum = 0;
+    for (int i = 1; i < n; i++) {
+        printf("%d - %d  (weight %d)\n", parent[i], i, graph[i][parent[i]]);
+        sum += graph[i][parent[i]];
+    }
+
+    printf("\nTotal weight of MST = %d\n", sum);
+}
+
+int main() {
+    int n;
+    int graph[MAX][MAX];
+
+    printf("Enter number of vertices: ");
+    scanf("%d", &n);
+
+    printf("Enter adjacency matrix:\n");
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            scanf("%d", &graph[i][j]);
+
+    prim(n, graph);
+    return 0;
 }
