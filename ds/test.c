@@ -1,65 +1,64 @@
 #include <stdio.h>
-#include <limits.h>
 
-#define MAX 10
+#define INF 9999
 
-int minKey(int key[], int mstSet[], int n) {
-    int min = INT_MAX, min_index;
-
-    for (int i = 0; i < n; i++)
-        if (mstSet[i] == 0 && key[i] < min)
-            min = key[i], min_index = i;
-
-    return min_index;
+int find(int parent[], int i) {
+    while (parent[i] != i)
+        i = parent[i];
+    return i;
 }
 
-void prim(int n, int graph[MAX][MAX]) {
-    int parent[MAX];
-    int key[MAX];
-    int mstSet[MAX];
-
-    for (int i = 0; i < n; i++) {
-        key[i] = INT_MAX;
-        mstSet[i] = 0;
-    }
-
-    key[0] = 0;       // Start at vertex 0
-    parent[0] = -1;   // Root has no parent
-
-    for (int count = 0; count < n - 1; count++) {
-        int u = minKey(key, mstSet, n);
-        mstSet[u] = 1;
-
-        for (int v = 0; v < n; v++) {
-            if (graph[u][v] && mstSet[v] == 0 && graph[u][v] < key[v]) {
-                parent[v] = u;
-                key[v] = graph[u][v];
-            }
-        }
-    }
-
-    printf("\nMST Edges:\n");
-    int sum = 0;
-    for (int i = 1; i < n; i++) {
-        printf("%d - %d  (weight %d)\n", parent[i], i, graph[i][parent[i]]);
-        sum += graph[i][parent[i]];
-    }
-
-    printf("\nTotal weight of MST = %d\n", sum);
+void Union(int parent[], int u, int v) {
+    parent[v] = u;
 }
 
 int main() {
-    int n;
-    int graph[MAX][MAX];
+    int n = 5;
 
-    printf("Enter number of vertices: ");
-    scanf("%d", &n);
+    int adj[5][5] = {
+        {0, 2, 4, 0, 0},
+        {2, 0, 3, 6, 0},
+        {4, 3, 0, 5, 1},
+        {0, 6, 5, 0, 7},
+        {0, 0, 1, 7, 0}
+    };
 
-    printf("Enter adjacency matrix:\n");
+    int parent[5];
     for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            scanf("%d", &graph[i][j]);
+        parent[i] = i;
 
-    prim(n, graph);
+    int ne = 0;   // number of edges used
+
+    printf("Edges in the MST:\n");
+
+    while (ne < n - 1) {
+        int min = INF;
+        int a = -1, b = -1;
+
+        // Step 1: Find smallest edge
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (adj[i][j] && adj[i][j] < min) {
+                    min = adj[i][j];
+                    a = i;
+                    b = j;
+                }
+            }
+        }
+
+        int u = find(parent, a);
+        int v = find(parent, b);
+        
+        // Step 2: Add edge if no cycle
+        if (u != v) {
+            printf("%d - %d  (weight = %d)\n", a, b, min);
+            Union(parent, u, v);
+            ne++;
+        }
+
+        // Step 3: Mark edge as used
+        adj[a][b] = adj[b][a] = INF;
+    }
+
     return 0;
 }
