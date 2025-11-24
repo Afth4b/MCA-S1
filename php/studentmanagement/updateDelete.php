@@ -78,7 +78,12 @@ if(isset($_POST['update1'])){
             WHERE rollno = $rollno";
 
     if(mysqli_query($conn,$sql)){
-        echo "<script>alert('Student details updated successfully!')</script>";
+        echo "
+        <script>
+            alert('Student details updated successfully!');
+            window.href.location = 'studDetails.php';
+        </script>";
+        
     } else {
         echo "<script>alert('Updation failed!')</script>";
     }
